@@ -34,6 +34,9 @@
 
     $button.appendTo($('nav'));
 
+
+    
+
       $('button').on('click',function(){
         if(streams.home.length!=previous){
           var newlength=streams.home.length-1
@@ -59,29 +62,23 @@
 
 
 
-      $('div').on('click',function(){
+      $('body').on('click','div',function(){
         $('h1').remove()
         $('p').remove()
         $('div').hide()
         $('button').text('Go Back Now')
         name_clicked=$(this).attr('id')
-        //alert(name_clicked)
-        // for(key in streams.users.shawndrost){
-        //   alert(streams.users.shawndrost[key].message)
-        // }
+
         var $heading=$('<h1>Tweets for '+name_clicked+'</h1>');
         $heading.appendTo($body)
         for(var key in streams.users[name_clicked]){
           var $tweet = $('<p id='+name_clicked+'></p>');
           $tweet.text('@' + name_clicked + ': ' + streams.users[name_clicked][key].message+" "+streams.users[name_clicked][key].created_at);
           $tweet.appendTo($body);
-          //alert(streams.users[name_clicked][key].message)
         }
 
       });
-      // $('div').on('click',function(){
-      //   alert($(this).closest($('head')).text())
-      // })
+
 
 });
 
